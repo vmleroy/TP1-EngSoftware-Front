@@ -20,7 +20,7 @@ const TextInputLogin: React.FC<Props> = ({
   return (
     <Box sx={{ '& > :not(style)': { m: 1 }, backgroundColor: "lightgray", margin: "1rem" }}>
       <Box 
-        sx={{ display: 'flex', alignItems: 'flex-end', width: "25vw"}}
+        sx={{ display: 'flex', alignItems: 'flex-end', width: '30vw'}}
       >
         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField 

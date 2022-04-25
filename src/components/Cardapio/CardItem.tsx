@@ -36,7 +36,12 @@ const CardItem: FC<ICard> = ({
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Adicionar ao carrinho</Button>
+                <Button 
+                    size="small"
+                    variant = "outlined"
+                >
+                    Adicionar ao carrinho
+                </Button>
             </CardActions>
         </Card>
     );

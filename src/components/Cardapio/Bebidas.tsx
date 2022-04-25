@@ -12,7 +12,7 @@ const Bebidas = () => {
 
   useEffect(() => {
     //Obter pizzas 
-    axios.get('http://localhost:8000/bebida')
+    axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida')
       .then (resposta => {
         setBebidas(resposta.data);
       })
