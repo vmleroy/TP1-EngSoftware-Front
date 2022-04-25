@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-import { Button, Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 
-import TextInputLogin from '../../components/TextInput/Login/TextInputLogin';
-import TextInputPassword from '../../components/TextInput/Password/TextInputPassword';
-import NavBar from '../../components/NavBar/NavBar';
+import NavBar from '../../components/nav-bar/NavBar';
+import UserData from '../../components/user-page/UserData'
+import AddressData from '../../components/user-page/AddressData'
+import LastsOrders from '../../components/user-page/LastsOrders'
 
 
-
-const Login = () => {
+const UserPage: React.FC = () => {
 
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();
@@ -17,10 +17,22 @@ const Login = () => {
         <Grid
             sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
         >
-            <NavBar /> 
+            <NavBar />
+            <Grid
+                    container
+                    item
+                    justifyContent="center"
+                    alignItems="center"
+                    rowSpacing={4}
+                    marginTop="0.5rem"
+                >
+                    <UserData />
+                    <AddressData />
+                    <LastsOrders />
+                </Grid> 
         </Grid>
     );
 
 };
 
-export default Login;
+export default UserPage;

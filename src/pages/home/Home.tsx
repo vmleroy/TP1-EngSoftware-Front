@@ -3,12 +3,12 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import { } from '@mui/icons-material';
 
-import NavBar from '../../components/NavBar/NavBar'
-import Pizzas from '../../components/Cardapio/Pizzas'
-import Promocoes from '../../components/Cardapio/Promocoes'
-import Bebidas from '../../components/Cardapio/Bebidas'
+import NavBar from '../../components/nav-bar/NavBar'
+import Pizzas from '../../components/cardapio/Pizzas'
+import Promocoes from '../../components/cardapio/Promocoes'
+import Bebidas from '../../components/cardapio/Bebidas'
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <>
             <Grid
@@ -23,7 +23,7 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                     rowSpacing={4}
-                    marginTop="1rem"
+                    marginTop="0.5rem"
                 >
                     <Promocoes />
                     <Pizzas />

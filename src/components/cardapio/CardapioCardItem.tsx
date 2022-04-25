@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import ICard from '../../interfaces/ICard'
 
-const CardItem: FC<ICard> = ({
+const CardapioCardItem: FC<ICard> = ({
     description,
     image,
     name,
@@ -47,4 +47,4 @@ const CardItem: FC<ICard> = ({
     );
 }
 
-export default CardItem;
+export default CardapioCardItem;

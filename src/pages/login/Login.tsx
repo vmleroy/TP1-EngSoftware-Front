@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { Button, Grid, Typography } from '@mui/material';
 
-import TextInputLogin from '../../components/TextInput/Login/TextInputLogin';
-import TextInputPassword from '../../components/TextInput/Password/TextInputPassword';
-import NavBar from '../../components/NavBar/NavBar';
+import TextInputLogin from '../../components/text-input/login/TextInputLogin';
+import TextInputPassword from '../../components/text-input/password/TextInputPassword';
+import NavBar from '../../components/nav-bar/NavBar';
 
 
 
-const Login = () => {
+const Login: React.FC = () => {
 
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();

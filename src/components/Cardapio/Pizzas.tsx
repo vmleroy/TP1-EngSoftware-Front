@@ -4,7 +4,7 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IPizza from '../../interfaces/IPizza'
-import CardItem from "./CardItem";
+import CardapioCardItem from "./CardapioCardItem";
 
 const Pizzas = () => {
 
@@ -25,7 +25,7 @@ const Pizzas = () => {
     <Grid
       container
       width="95%"
-      margin="2rem"
+      margin="0.5rem"
       alignItems="center"
       direction="row"
       sx={{ minHeight: "25vh"}}
@@ -52,7 +52,7 @@ const Pizzas = () => {
       >
           {pizza?.map(item =>
             <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
-              <CardItem 
+              <CardapioCardItem 
                 key={item._id}
                 _id={item._id}
                 description={item.description}

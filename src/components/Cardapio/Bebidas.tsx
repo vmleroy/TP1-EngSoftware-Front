@@ -4,14 +4,14 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IBebida from '../../interfaces/IBebida'
-import CardItem from "./CardItem";
+import CardapioCardItem from "./CardapioCardItem";
 
 const Bebidas = () => {
 
   const [bebida, setBebidas] = useState<IBebida[]>();
 
   useEffect(() => {
-    //Obter pizzas 
+    //Obter bebidas 
     axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida')
       .then (resposta => {
         setBebidas(resposta.data);
@@ -25,7 +25,7 @@ const Bebidas = () => {
     <Grid
       container
       width="95%"
-      margin="2rem"
+      margin="0.5rem"
       alignItems="center"
       direction="row"
       sx={{ minHeight: "25vh"}}
@@ -52,7 +52,7 @@ const Bebidas = () => {
       >
           {bebida?.map(item =>
             <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
-              <CardItem 
+              <CardapioCardItem 
                 key={item._id}
                 _id={item._id}
                 description={item.description}

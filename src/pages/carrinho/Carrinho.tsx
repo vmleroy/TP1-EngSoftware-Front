@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import { } from '@mui/icons-material';
 
-const Carrinho = () => {
+const Carrinho: React.FC = () => {
 
     return (
         <Grid
