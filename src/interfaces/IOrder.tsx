@@ -1,3 +1,5 @@
+import IBebida from "./IBebida";
+import IPizza from "./IPizza";
 import IPizza2Flavours from "./IPizza2Flavours";
 import IUser from "./IUser";
 
@@ -6,9 +8,9 @@ export default interface IOrder {
     user: IUser,
     createDate: Date,
     status: string,
-    pizzas: string[],
-    pizza2flavors: string[]
-    drinks: string[],
+    pizzas: IPizza[],
+    pizza2flavors: IPizza2Flavours[]
+    drinks: IBebida[],
     _id: string,
     _v: number
 }

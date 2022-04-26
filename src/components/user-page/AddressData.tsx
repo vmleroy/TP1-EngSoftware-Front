@@ -16,10 +16,10 @@ const AddressData = () => {
 
     useEffect(() => {
         //Obter dados do usuario 
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
+        axios.get('http://localhost:8000/usuario/' + id)
             .then(resposta_1 => {
                 const address_id = resposta_1.data.address;
-                axios.get('https://cyber-pizza-engsoft.herokuapp.com/endereco/' + address_id)
+                axios.get('http://localhost:8000/endereco/' + address_id)
                     .then (resposta_2 => {
                         setDados(resposta_2.data);
                     })

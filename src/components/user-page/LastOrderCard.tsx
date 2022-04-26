@@ -18,42 +18,65 @@ const LastOrderCard: React.FC<ICardOrder> = ({
   //pizza2flavours
 }) => {
 
-  const [bebidasObj, setBebidas] = React.useState<IBebida[]>([]);
-  const [pizzasObj, setPizzas] = React.useState<IPizza[]>([]);
+  const calcularValorTotal = () => {
+    let valorTotal = 0;
+    drinks.map(item => valorTotal += item.price);
+    pizzas.map(item => valorTotal += item.price);
+    return valorTotal;
+  };
+  
+  // const [bebidasObj, setBebidas] = React.useState<IBebida[]>([]);
+  // const [pizzasObj, setPizzas] = React.useState<IPizza[]>([]);
 
-  React.useEffect(() => {
-    {drinks?.map((item: string) =>
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida/' + item)
-          .then(resposta_d => {
-            setBebidas([...bebidasObj, resposta_d.data]);
-          })
-          .catch(erro_d => {
-            console.log("erro_d" + erro_d);
-          })
-      )}
-    {pizzas?.map((item: string) =>
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/pizza/' + item)
-          .then(resposta_p => {
-            setPizzas([...pizzasObj, resposta_p.data]);
-          })
-          .catch(erro_p => {
-            console.log("erro_p" + erro_p);
-          })
-      )}
-  }, []);
+  // React.useEffect(() => {
+  //   console.log(pizzas);
+  //   {drinks?.map((item: string) =>
+  //       axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida/' + item)
+  //         .then(resposta_d => {
+  //           setBebidas(oldList => [...oldList, resposta_d.data]);
+  //         })
+  //         .catch(erro_d => {
+  //           console.log("erro_d" + erro_d);
+  //         })
+  //     )}
+  //   {pizzas?.map((item: string) =>
+  //       axios.get('https://cyber-pizza-engsoft.herokuapp.com/pizza/' + item)
+  //         .then(resposta_p => {
+  //           setPizzas(oldList => [...oldList, resposta_p.data]);
+  //         })
+  //         .catch(erro_p => {
+  //           console.log("erro_p" + erro_p);
+  //         })
+  //     )}
+  // }, []);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: "95vw" }}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Pedido {number} || Status: {status}
           </Typography>
-          {pizzasObj?.map( (item: IPizza) =>
-            <Typography variant="body2" color="text.secondary">
-              . {item.name}
+          <Grid sx={{display: "flex", alignItems: "flex-start", flexDirection: "column"}}>
+            <Typography>
+                Itens:
             </Typography>
-          )};
+            {pizzas?.map( item =>
+              <Typography variant="body2" color="text.secondary">
+                . {item.name} -- R${item.price}
+              </Typography>              
+            )}
+            {drinks?.map( item =>
+              <Typography variant="body2" color="text.secondary">
+                . {item.name} -- R${item.price}
+              </Typography>
+            )}
+          </Grid>
+          <Grid sx={{display: "flex", alignItems: "flex-end", flexDirection: "column"}}>
+              <Typography variant="body2" color="text.secondary">
+                Valor total: R${calcularValorTotal()} 
+              </Typography>                
+          </Grid>
         </CardContent>
       </CardActionArea>
     </Card>

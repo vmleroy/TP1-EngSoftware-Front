@@ -5,7 +5,7 @@ import IPizza2Flavours from "./IPizza2Flavours";
 export default interface ICardOrder {
     status: string,
     number: number,
-    pizzas: string[],
-    drinks: string[],
+    pizzas: IPizza[],
+    drinks: IBebida[],
     //pizza2flavours: string[],
 }
