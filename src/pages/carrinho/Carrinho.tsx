@@ -1,33 +1,31 @@
 import React from 'react';
 
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { } from '@mui/icons-material';
+
+import NavBar from '../../components/nav-bar/NavBar';
 
 const Carrinho: React.FC = () => {
 
     return (
         <Grid
-                container
-                direction="column"
-                sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
-            >
+            container
+            direction="column"
+            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
+        >
+            <NavBar />
             <Grid
-                sx={{ backgroundColor: "#120458" }}
-                >
-                <Grid
-                    container
-                    sx={{
-                        fontWeight: "500",
-                        fontSize: "1.5rem",
-                        color: '#ffdd6b',
-                    }}
-                >
-                    <Grid item xs={11}>
-                        Valor Total
-                    </Grid>
-                    <Grid item xs={1}>
-                        0
-                    </Grid>
+                container
+                item
+                justifyContent="center"
+                alignItems="center"
+                rowSpacing={4}
+                marginTop="0.5rem"
+            >
+                <Grid sx={{ backgroundColor: "#120458", minWidth: "100vh"}} >
+                    <Typography  color="#ffdd6b" sx={{ ml:2, mr:2 }}> 
+                        Valor total: 0 
+                    </Typography>
                 </Grid>
             </Grid>
         </Grid>

@@ -5,8 +5,6 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IOrder from "../../interfaces/IOrder";
-import IBebida from "../../interfaces/IBebida";
-import IPizza from "../../interfaces/IPizza";
 import LastOrderCard from "./LastOrderCard";
 
 
