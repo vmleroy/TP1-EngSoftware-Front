@@ -47,7 +47,7 @@ const LastOrderCard: React.FC<ICardOrder> = ({
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Pedido
+            Pedido {number} || Status: {status}
           </Typography>
           {pizzasObj?.map( (item: IPizza) =>
             <Typography variant="body2" color="text.secondary">
