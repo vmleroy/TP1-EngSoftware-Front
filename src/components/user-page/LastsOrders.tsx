@@ -1,36 +1,52 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
-import IOrders from "../../interfaces/IAddress";
+import IOrder from "../../interfaces/IOrder";
+import IBebida from "../../interfaces/IBebida";
+import IPizza from "../../interfaces/IPizza";
+import LastOrderCard from "./LastOrderCard";
 
 
-const Pizzas = () => {
+const LastOrders = () => {
 
-    const { id } = useParams();
+    // const { id } = useParams();
+    const id = "625f6f723ac62e5133ee0fde";
 
-    const [dados, setDados] = useState<IOrders[]>();
-
+    const [order, setOrder] = useState<IOrder[]>();
+    const [bebidas, setBebidas] = useState<IBebida[]>([]);
+    const [pizzas, setPizzas] = useState<IPizza[]>([]);
 
     useEffect(() => {
-        //Obter dados do usuario 
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
-            .then(resposta_1 => {
-                const ordess_id = resposta_1.data.address;
-                axios.get('https://cyber-pizza-engsoft.herokuapp.com/endereco/' + ordess_id)
-                    .then (resposta_2 => {
-                        setDados(resposta_2.data);
+        axios.get('https://cyber-pizza-engsoft.herokuapp.com/pedido/' + id)
+          .then (resposta => {
+            setOrder(resposta.data);
+            const order_res = resposta.data;
+            {order_res?.drinks?.map( (item:string) => 
+                axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida/' + item)
+                    .then (resposta_d => {
+                        setBebidas([...bebidas, resposta_d.data]);
                     })
-                    .catch(erro_2 => {
-                        console.log(erro_2)
-                    });
-            })
-            .catch(erro_1 => {
-                console.log(erro_1)
-            });
-    }, []);
+                    .catch(erro_d => {
+                        console.log("erro_d" + erro_d);
+                    })
+            )}
+            {order_res?.pizzas?.map( (item:string) => 
+                axios.get('https://cyber-pizza-engsoft.herokuapp.com/pizza/' + item)
+                    .then (resposta_p => {
+                        setPizzas([...pizzas, resposta_p.data]);
+                    })
+                    .catch(erro_p => {
+                        console.log("erro_p" + erro_p);
+                    })
+            )}
+        })
+        .catch(erro => {
+            console.log(erro)
+        });
+      }, []);
 
     return (
         <Grid
@@ -61,9 +77,18 @@ const Pizzas = () => {
                 direction="column"
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
-                
+                <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
+                    {order?.map((pedido:IOrder) => 
+                        <LastOrderCard 
+                            status={pedido.status}
+                            number={pedido.number}
+                            pizzas={pedido.pizzas}
+                            drinks={pedido.drinks}
+                        />
+                    )}
+                </Grid>
             </Grid>
         </Grid>
     );
 };
-export default Pizzas;
+export default LastOrders;

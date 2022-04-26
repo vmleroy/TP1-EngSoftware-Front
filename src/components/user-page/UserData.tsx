@@ -7,7 +7,7 @@ import { Grid, Typography } from "@mui/material";
 import IUser from "../../interfaces/IUser";
 
 
-const Pizzas = () => {
+const UserData = () => {
 
     const { id } = useParams();
 
@@ -63,4 +63,4 @@ const Pizzas = () => {
         </Grid>
     );
 };
-export default Pizzas;
+export default UserData;

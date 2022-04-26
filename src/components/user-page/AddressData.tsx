@@ -7,7 +7,7 @@ import { Grid, Typography } from "@mui/material";
 import IAddress from "../../interfaces/IAddress";
 
 
-const Pizzas = () => {
+const AddressData = () => {
 
     const { id } = useParams();
 
@@ -71,4 +71,4 @@ const Pizzas = () => {
         </Grid>
     );
 };
-export default Pizzas;
+export default AddressData;

@@ -7,9 +7,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import ICard from '../../interfaces/ICard'
+import ICardCardapio from '../../interfaces/ICardCardapio'
 
-const CardapioCardItem: FC<ICard> = ({
+const CardapioCardItem: FC<ICardCardapio> = ({
     description,
     image,
     name,
