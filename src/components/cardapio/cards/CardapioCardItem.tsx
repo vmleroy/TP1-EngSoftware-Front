@@ -7,17 +7,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import ICardCardapio from '../../interfaces/ICardCardapio'
+import ICardCardapio from '../../../interfaces/ICardCardapio'
 
 const CardapioCardItem: FC<ICardCardapio> = ({
     description,
     image,
     name,
     price,
-    _id
-}) => {
+    _id,
+    handleClick
+}) => {    
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ maxWidth: 200}}>
             <CardMedia
             component="img"
             height="140"
@@ -39,6 +40,7 @@ const CardapioCardItem: FC<ICardCardapio> = ({
                 <Button 
                     size="small"
                     variant = "outlined"
+                    onClick={() => {handleClick(_id)}}
                 >
                     Adicionar ao carrinho
                 </Button>

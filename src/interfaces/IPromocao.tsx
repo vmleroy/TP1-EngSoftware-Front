@@ -1,8 +1,14 @@
+import IBebida from "./IBebida"
+import IPizza from "./IPizza"
+import IPizza2Flavours from "./IPizza2Flavours"
+
 export default interface IPromocao {
-    description: string,
-    image: string,
     name: string,
-    price: number,
-    __v: number,
+    promoPrice: string,
+    originalPrice: number,
+    discount: number,
+    pizzas: IPizza[],
+    pizzas2flavors: IPizza2Flavours[],
+    drinks: IBebida[]
     _id: string
 };

@@ -1,24 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-
 import axios from "axios";
+
 import { Grid, Typography } from "@mui/material";
 
 import IOrder from "../../interfaces/IOrder";
-import LastOrderCard from "./LastOrderCard";
+import LastOrderCard from "./cards/LastOrderCard";
 
 
 const LastOrders = () => {
 
-    // const { id } = useParams();
-    const id = "626868b41c5d5bab991d013d";
+    const { id } = useParams();
 
     const [order, setOrder] = useState<IOrder[]>([]);
 
     useEffect(() => {
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/pedido/')
+        axios.get('https://cyber-pizza-engsoft.herokuapp.com/pedido/usuario/' + id)
           .then (resposta => {
             setOrder(resposta.data);
+            console.log(resposta.data);
         })
         .catch(erro => {
             console.log(erro)
@@ -55,12 +55,13 @@ const LastOrders = () => {
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
                 {order?.map((pedido:IOrder) => 
-                    <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
+                    <Grid item sx={{ margin: 0.5 }} padding="0.5rem">
                         <LastOrderCard 
                             status={pedido.status}
                             number={pedido.number}
                             pizzas={pedido.pizzas}
                             drinks={pedido.drinks}
+                            pizza2flavours={pedido.pizza2flavors}
                         />
                     </Grid>
                 )}

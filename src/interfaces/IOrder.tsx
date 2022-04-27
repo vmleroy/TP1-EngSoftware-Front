@@ -11,6 +11,4 @@ export default interface IOrder {
     pizzas: IPizza[],
     pizza2flavors: IPizza2Flavours[]
     drinks: IBebida[],
-    _id: string,
-    _v: number
 }

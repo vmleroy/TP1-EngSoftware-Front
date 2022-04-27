@@ -4,9 +4,16 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IBebida from '../../interfaces/IBebida'
-import CardapioCardItem from "./CardapioCardItem";
+import CardapioCardItem from "./cards/CardapioCardItem";
+import { useOrderContext } from "../../context/orderContext";
 
 const Bebidas = () => {
+
+  const { order, setOrder } = useOrderContext();
+  
+  const handleClick = (id: string) => {
+    console.log("Clique esta sendo tratado " + id)
+  }
 
   const [bebida, setBebidas] = useState<IBebida[]>();
 
@@ -17,7 +24,7 @@ const Bebidas = () => {
         setBebidas(resposta.data);
       })
       .catch(erro => {
-        console.log(erro)
+        console.log(erro);
       });
   }, []);
 
@@ -51,7 +58,7 @@ const Bebidas = () => {
         sx={{ minHeight: "20vh", border: 2, borderColor:"#120458" }}
       >
           {bebida?.map(item =>
-            <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
+            <Grid item sx={{ margin: 2 }} padding="0.5rem">
               <CardapioCardItem 
                 key={item._id}
                 _id={item._id}
@@ -59,6 +66,7 @@ const Bebidas = () => {
                 name={item.name}
                 price={item.price}
                 image={item.image}
+                handleClick={handleClick}
               />
             </Grid>
           )};

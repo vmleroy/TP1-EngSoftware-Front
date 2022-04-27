@@ -3,6 +3,5 @@ export default interface IPizza {
     image: string,
     name: string,
     price: number,
-    __v: number,
     _id: string
 };

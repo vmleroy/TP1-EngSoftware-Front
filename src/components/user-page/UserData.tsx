@@ -16,7 +16,7 @@ const UserData = () => {
 
     useEffect(() => {
         //Obter dados do usuario 
-        axios.get('http://localhost:8000/usuario/' + id)
+        axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
             .then(resposta => {
                 setDados(resposta.data);
             })

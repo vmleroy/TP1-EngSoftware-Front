@@ -7,6 +7,5 @@ export default interface IPizza2Flavours {
     name: string,
     description: string,
     price: number,
-    __v: number,
     _id: string
 };

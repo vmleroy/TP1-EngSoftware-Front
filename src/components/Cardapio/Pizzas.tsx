@@ -4,9 +4,16 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IPizza from '../../interfaces/IPizza'
-import CardapioCardItem from "./CardapioCardItem";
+import CardapioCardItem from "./cards/CardapioCardItem";
+import { useOrderContext } from "../../context/orderContext";
 
 const Pizzas = () => {
+
+  const { order, setOrder } = useOrderContext();
+  
+  const handleClick = (id: string) => {
+    console.log("Clique esta sendo tratado " + id)
+  }
 
   const [pizza, setPizzas] = useState<IPizza[]>();
 
@@ -18,7 +25,7 @@ const Pizzas = () => {
       })
       .catch(erro => {
         console.log(erro)
-      });
+      });      
   }, []);
 
   return (
@@ -51,7 +58,7 @@ const Pizzas = () => {
         sx={{ minHeight: "20vh", border: 2, borderColor:"#120458" }}
       >
           {pizza?.map(item =>
-            <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
+            <Grid item sx={{ margin: 2 }} padding="0.5rem">
               <CardapioCardItem 
                 key={item._id}
                 _id={item._id}
@@ -59,6 +66,7 @@ const Pizzas = () => {
                 name={item.name}
                 price={item.price}
                 image={item.image}
+                handleClick={handleClick}
               />
             </Grid>
           )};

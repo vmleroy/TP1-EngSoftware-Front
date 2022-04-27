@@ -4,17 +4,24 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
 import IPromocao from '../../interfaces/IPromocao'
-import CardapioCardItem from "./CardapioCardItem";
+import PromocoesCardItem from "./cards/PromocoesCardItem";
+import { useOrderContext } from "../../context/orderContext";
 
 const Promocoes = () => {
+
+  const { order, setOrder } = useOrderContext();
+  
+  const handleClick = () => {
+        
+  }
 
   const [promocao, setPromocoes] = useState<IPromocao[]>();
 
   useEffect(() => {
     //Obter prmocoes 
-    axios.get('http://localhost:8000/')
+    axios.get('https://cyber-pizza-engsoft.herokuapp.com/promo')
       .then (resposta => {
-        //setPromocoes(resposta.data);
+        setPromocoes(resposta.data);
         console.log(resposta.data);
       })
       .catch(erro => {
@@ -52,15 +59,19 @@ const Promocoes = () => {
         sx={{ minHeight: "20vh", border: 2, borderColor:"#120458" }}
       >
           {promocao?.map(item =>
-            <Grid item sx={{ backgroundColor: 'white', margin: 2 }} padding="0.5rem">
-              <CardapioCardItem 
+            <Grid item sx={{ margin: 2 }} padding="0.5rem">
+              {<PromocoesCardItem 
                 key={item._id}
                 _id={item._id}
-                description={item.description}
                 name={item.name}
-                price={item.price}
-                image={item.image}
-              />
+                originalPrice={item.originalPrice}
+                promoPrice={item.promoPrice}
+                discount={item.discount}
+                pizzas={item.pizzas}
+                pizzas2flavors={item.pizzas2flavors}
+                drinks={item.drinks}
+                handleClick={handleClick}
+              />}
             </Grid>
           )};
       </Grid>

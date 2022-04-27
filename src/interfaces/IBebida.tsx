@@ -3,6 +3,5 @@ export default interface IBebida {
     image: string,
     name: string,
     price: number,
-    __v: number,
     _id: string
 };

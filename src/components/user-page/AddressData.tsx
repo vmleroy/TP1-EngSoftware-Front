@@ -16,10 +16,10 @@ const AddressData = () => {
 
     useEffect(() => {
         //Obter dados do usuario 
-        axios.get('http://localhost:8000/usuario/' + id)
+        axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
             .then(resposta_1 => {
                 const address_id = resposta_1.data.address;
-                axios.get('http://localhost:8000/endereco/' + address_id)
+                axios.get('https://cyber-pizza-engsoft.herokuapp.com/endereco/' + address_id)
                     .then (resposta_2 => {
                         setDados(resposta_2.data);
                     })
@@ -65,7 +65,7 @@ const AddressData = () => {
                 <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Rua: {dados?.street} </Typography>
                 <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Bairro: {dados?.district} </Typography>
                 <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Numero: {dados?.number} </Typography>                
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Cidade: Ainda nao implementado </Typography>
+                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Cidade: {dados?.city} </Typography>
                 
             </Grid>
         </Grid>

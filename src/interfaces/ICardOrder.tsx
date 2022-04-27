@@ -7,5 +7,5 @@ export default interface ICardOrder {
     number: number,
     pizzas: IPizza[],
     drinks: IBebida[],
-    //pizza2flavours: string[],
+    pizza2flavours: IPizza2Flavours[],
 }
