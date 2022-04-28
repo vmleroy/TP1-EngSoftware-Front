@@ -3,19 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 import { CssBaseline, AppBar, Typography, Toolbar, Avatar, IconButton, Grid } from '@mui/material';
 
-import { useOrderContext } from '../../context/orderContext';
 
 const NavBar = () => {
-
-    const {order, setOrder} = useOrderContext();
 
     const navigate = useNavigate();
 
     let login = false;
     const handleLoginClick = () => {
         if (!login)
-            navigate("/login")
-        console.log(order)
+            navigate("/login");
     }
 
     return (

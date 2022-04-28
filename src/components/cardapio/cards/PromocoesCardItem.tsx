@@ -20,7 +20,7 @@ const PromocoesCardItem: FC<ICardPromocoes> = ({
     handleClick
 }) => {
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ maxWidth: 200, border: 1.5, borderColor: "darkgrey" }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div"
                     sx={{fontSize: 15}}

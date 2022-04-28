@@ -15,7 +15,7 @@ const UserPage: React.FC = () => {
 
     return (
         <Grid
-            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
+            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#f5f5f5' }}
         >
             <NavBar />
             <Grid

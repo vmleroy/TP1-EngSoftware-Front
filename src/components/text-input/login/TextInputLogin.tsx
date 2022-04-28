@@ -18,7 +18,7 @@ const TextInputLogin: React.FC<Props> = ({
   };
 
   return (
-    <Box sx={{ '& > :not(style)': { m: 1 }, backgroundColor: "lightgray", margin: "1rem" }}>
+    <Box sx={{ '& > :not(style)': { m: 1 }, margin: "1rem" }}>
       <Box 
         sx={{ display: 'flex', alignItems: 'flex-end', width: '30vw'}}
       >
@@ -26,7 +26,7 @@ const TextInputLogin: React.FC<Props> = ({
         <TextField 
           id="email" 
           label="Email" 
-          variant="standard" 
+          variant="outlined" 
           required
           onChange={onChangeUsuario}  
           sx={{width: "25vw"}}        

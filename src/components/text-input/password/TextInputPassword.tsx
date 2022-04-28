@@ -44,7 +44,7 @@ const TextInputPassword: React.FC<Props> = ({
   };
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', backgroundColor: "lightgrey", margin: "1rem" }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', margin: "1rem" }}>
         <FormControl sx={{ m: 1, width: '30vw'}} variant="standard">
           <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
           <Input

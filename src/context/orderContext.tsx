@@ -7,7 +7,7 @@ interface IOrderContext {
     order: IOrder;
   }
   
-  export const orderContext = React.createContext<IOrderContext>({
+  export const OrderContext = React.createContext<IOrderContext>({
     setOrder: () => {},
     
     order: {
@@ -27,44 +27,12 @@ interface IOrderContext {
             },
         },
         createDate: new Date(),
-        status: "",
-        pizzas: [{
-            description: "",
-            image: "",
-            name: "",
-            price: 0,
-            _id: "",
-        }],
-        pizza2flavors: [{
-            image: "",
-            pizza1: {
-                description: "",
-                image: "",
-                name: "",
-                price: 0,
-                _id: "",
-            },
-            pizza2: {
-                description: "",
-                image: "",
-                name: "",
-                price: 0,
-                _id: "",
-            },
-            name: "",
-            description: "",
-            price: 0,
-            _id: "",
-        }],
-        drinks: [{
-            description: "",
-            image: "",
-            name: "",
-            price: 0,
-            _id: "",
-        }],
+        status: "pending",
+        pizzas: [],
+        pizza2flavors: [],
+        drinks: [],
     },
 
   });
   
-  export const useOrderContext = () => useContext(orderContext);
+  export const useOrderContext = () => useContext<IOrderContext>(OrderContext);

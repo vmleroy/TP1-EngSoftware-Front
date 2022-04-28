@@ -5,7 +5,7 @@ import { Grid, Typography } from "@mui/material";
 
 import IPromocao from '../../interfaces/IPromocao'
 import PromocoesCardItem from "./cards/PromocoesCardItem";
-import { useOrderContext } from "../../context/orderContext";
+import { useOrderContext } from "../../context/OrderContext";
 
 const Promocoes = () => {
 
@@ -22,7 +22,6 @@ const Promocoes = () => {
     axios.get('https://cyber-pizza-engsoft.herokuapp.com/promo')
       .then (resposta => {
         setPromocoes(resposta.data);
-        console.log(resposta.data);
       })
       .catch(erro => {
         console.log(erro)
