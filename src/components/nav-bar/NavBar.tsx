@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { CssBaseline, AppBar, Typography, Toolbar, Avatar, IconButton, Grid } from '@mui/material';
 
+import { useOrderContext } from '../../context/orderContext';
 
 const NavBar = () => {
+
+    const {order, setOrder} = useOrderContext();
 
     const navigate = useNavigate();
 
@@ -12,6 +15,7 @@ const NavBar = () => {
     const handleLoginClick = () => {
         if (!login)
             navigate("/login")
+        console.log(order)
     }
 
     return (

@@ -12,8 +12,10 @@ const Bebidas = () => {
   const { order, setOrder } = useOrderContext();
   
   const handleClick = (id: string) => {
-    console.log("Clique esta sendo tratado " + id)
-  }
+    
+    const novaBebida = bebida?.find(item => item._id === id);
+    setOrder({ ...order, drinks: [...order.drinks, novaBebida] });
+  };
 
   const [bebida, setBebidas] = useState<IBebida[]>();
 
