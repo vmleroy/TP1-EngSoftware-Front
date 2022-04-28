@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { CssBaseline, AppBar, Typography, Toolbar, Avatar, IconButton, Grid } from '@mui/material';
+import { CssBaseline, AppBar, Typography, 
+        Toolbar, Avatar, IconButton, Grid } 
+from '@mui/material';
 
 
 const NavBar = () => {

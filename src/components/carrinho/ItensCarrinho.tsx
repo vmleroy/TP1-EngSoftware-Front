@@ -43,19 +43,27 @@ const ItensCarrinho = () => {
           direction="column"
           sx={{ ml:2 }}
         > 
+          <Typography sx={{mt:1}}>Pizzas==========</Typography>
           {order?.pizzas?.map(item =>
             <Typography>
-              Pizza: {item.name}
+              . {item.name} -- R$ {item.price}
             </Typography>
           )}
           {order?.pizza2flavors?.map(item =>
             <Typography>
-              Pizza meio-meio: {item.name}
+             . {item.name} -- R$ {item.price}
             </Typography>
           )}
+          <Typography sx={{mt:1}}>Bebidas========</Typography>
           {order?.drinks?.map(item =>
             <Typography>
-              Bebida: {item.name}
+              . {item.name} -- R$ {item.price}
+            </Typography>
+          )}
+          <Typography sx={{mt:1}}>Promocoes=====</Typography>
+          {order?.promos?.map(item =>
+            <Typography>
+              . {item.name} -- R$ {Number(item.promoPrice.toFixed(1))}
             </Typography>
           )}
         </Grid>

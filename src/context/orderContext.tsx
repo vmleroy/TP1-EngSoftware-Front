@@ -31,6 +31,7 @@ interface IOrderContext {
         pizzas: [],
         pizza2flavors: [],
         drinks: [],
+        promos: []
     },
 
   });

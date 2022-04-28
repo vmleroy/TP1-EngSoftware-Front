@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { } from '@mui/icons-material';
@@ -6,26 +6,37 @@ import { } from '@mui/icons-material';
 import NavBar from '../../components/nav-bar/NavBar';
 import { useOrderContext } from '../../context/OrderContext';
 import ItensCarrinho from '../../components/carrinho/ItensCarrinho';
+import { Navigate } from 'react-router-dom';
+import CarrinhoLogin from '../../components/modal/CarrinhoLogin';
 
 const Carrinho: React.FC = () => {
 
     const { order, setOrder } = useOrderContext();
 
+    const [openModal, setOpenModal] = useState(false);
+
+    const login = false;
     const finalizarPedido = () => {
+        if (!login) 
+            setOpenModal(true);
+        else {
+            setOrder({ ...order, status: "completed" });
+        }
         console.log(order)
     }
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+      };
 
     const calcularValorTotal = () => {
         let valorTotal = 0;
         order?.pizzas?.map(item => valorTotal += item.price);
         order?.pizza2flavors?.map(item => valorTotal += item.price);
         order?.drinks?.map(item => valorTotal += item.price);
+        order?.promos?.map(item => valorTotal += Number(item.promoPrice.toFixed(1)));
         return valorTotal;
     };
-
-    useEffect(() => {
-        console.log("tela atualizou");
-      }, []);
 
     return (
         <Grid
@@ -56,6 +67,10 @@ const Carrinho: React.FC = () => {
                     Finalizar pedido
                 </Button>
             </Grid>
+            <CarrinhoLogin 
+                modalOpen = {openModal}
+                handleCloseModal = {handleCloseModal}
+            />
         </Grid>
     );
 

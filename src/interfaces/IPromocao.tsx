@@ -4,7 +4,7 @@ import IPizza2Flavours from "./IPizza2Flavours"
 
 export default interface IPromocao {
     name: string,
-    promoPrice: string,
+    promoPrice: number,
     originalPrice: number,
     discount: number,
     pizzas: IPizza[],

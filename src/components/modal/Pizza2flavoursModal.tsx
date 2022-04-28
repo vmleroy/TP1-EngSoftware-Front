@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-import 
-  { Button, Modal, Grid, Switch, FormControl, 
-  InputLabel, Select, MenuItem, SelectChangeEvent, Typography } 
-from '@mui/material';
+import {
+  Button, Modal, Grid, Switch, FormControl,
+  InputLabel, Select, MenuItem, SelectChangeEvent,
+  Typography, IconButton
+}
+  from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 import IPizza from '../../interfaces/IPizza';
 
@@ -11,7 +14,8 @@ interface Props {
   modalOpen: boolean,
   idPizza: string,
   pizzas: IPizza[],
-  handleClose: (id: string[]) => void
+  handleCloseModalWithPizza: (id: string[]) => void,
+  handleCloseModal: () => void
 }
 
 const style = {
@@ -27,7 +31,8 @@ const style = {
 };
 
 const Pizza2FlavoursModal: React.FC<Props> = ({
-  modalOpen, idPizza, pizzas, handleClose
+  modalOpen, idPizza, pizzas, 
+  handleCloseModalWithPizza, handleCloseModal
 }) => {
 
   const [meioPizza, setMeioPizza] = useState(false);
@@ -35,13 +40,16 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
   const [idPizzas, setIdPizzas] = useState<string[]>([])
 
 
-  const handleClick = () => {
+  const handleClickAddCarrinho = () => {
+    idPizzas.push(idPizza);
     if (meioPizza) {
-      setIdPizzas(oldArray => [...oldArray, pizza]);  
+      idPizzas.push(pizza);
     }
-    setIdPizzas(oldArray => [...oldArray, idPizza]);
-    console.log(idPizzas);
-    handleClose(idPizzas);
+    handleCloseModalWithPizza(idPizzas);
+  }
+
+  const handleExitButton = () =>  {
+    handleCloseModal();
   }
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -55,40 +63,55 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
       aria-describedby="modal-modal-description"
     >
       <Grid
-        container
         alignSelf="center"
         direction="column"
         justifyContent="center"
         sx={style}
       >
-        <Typography>Deseja Pizza meio a meio?</Typography>
-        <Switch onChange={(e) => { setMeioPizza(e.target.checked) }}
-          defaultChecked={false}
-        />
-        {meioPizza &&
-          <Grid>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={pizza}
-                label="Sabores"
-                onChange={handleChange}
-              >
-                {pizzas?.map((item: IPizza) => 
-                  <MenuItem value={item._id}>{item.name}</MenuItem>
-                )}
-              </Select>
-            </FormControl>
-          </Grid>
-        }
-        <Button
-          onClick={() => { handleClick() }}
-          sx={{ margin: 2 }}
+        <IconButton onClick={() => { handleExitButton() }}>
+          <CloseIcon />
+        </IconButton>
+        <Grid
+          container
+          item
+          justifyContent="center"
+          justifyItems="center"
+          alignContent="center"
+          alignItems="center"
+          direction="column"
         >
-          Adicionar ao carrinho
-        </Button>
+          <Typography>Deseja Pizza meio a meio?</Typography>
+          <Switch onChange={(e) => { setMeioPizza(e.target.checked) }}
+            defaultChecked={false}
+          />
+          {meioPizza &&
+            <Grid>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Sabores</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={pizza}
+                  label="Sabores"
+                  onChange={handleChange}
+                  sx={{ minWidth: "30vw" }}
+                >
+                  {pizzas?.map((item: IPizza) => {
+                      if (item._id != idPizza)
+                        return <MenuItem value={item._id}> {item.name} </MenuItem>
+                    }
+                  )}
+                </Select>
+              </FormControl>
+            </Grid>
+          }
+          <Button
+            onClick={() => { handleClickAddCarrinho() }}
+            sx={{ margin: 2 }}
+          >
+            Adicionar ao carrinho
+          </Button>
+        </Grid>
       </Grid>
     </Modal>
   )

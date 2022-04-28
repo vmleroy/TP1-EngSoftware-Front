@@ -11,11 +11,13 @@ const Promocoes = () => {
 
   const { order, setOrder } = useOrderContext();
   
-  const handleClick = () => {
-        
-  }
-
   const [promocao, setPromocoes] = useState<IPromocao[]>();
+
+  const handleClick = (id: string) => {
+    let novaPromo = promocao?.find(item => item._id === id);
+    if (novaPromo!)
+      setOrder({ ...order, promos: order.promos.push(novaPromo) });
+  }
 
   useEffect(() => {
     //Obter prmocoes 
@@ -72,7 +74,7 @@ const Promocoes = () => {
                 handleClick={handleClick}
               />}
             </Grid>
-          )};
+          )}
       </Grid>
     </Grid>
   );
