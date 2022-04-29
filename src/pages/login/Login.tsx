@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 import { Button, Grid, Typography } from '@mui/material';
 
@@ -13,6 +14,16 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();
 
+    const handleClick = (email: string|undefined, password: string|undefined) => {
+        axios.post('http://localhost:8000/login', {email:email, password:password})
+            .then (resposta => {
+                console.debug(resposta.data);
+            })
+            .catch(erro => {
+                console.log(erro)
+            });
+        console.log("Verificando login")
+    }
     return (
         <Grid
             sx={{ minWidth: "100vw", minHeight: "100vh", backgroundColor: '#f5f5f5' }}
@@ -36,7 +47,10 @@ const Login: React.FC = () => {
                 </Typography>
                 <TextInputLogin setEmail={setEmail} />
                 <TextInputPassword setPassword={setPassword} />
-                <Button variant="outlined" sx={{ margin: "0.5rem" }}> Login </Button>
+                <Button variant="outlined"
+                        sx={{ margin: "0.5rem" }}
+                        onClick={() => {handleClick(email, password)}}
+                > Login </Button>
                 <Button variant="outlined" sx={{ margin: "0.5rem" }}> Cadastro </Button>
             </Grid>
         </Grid>
