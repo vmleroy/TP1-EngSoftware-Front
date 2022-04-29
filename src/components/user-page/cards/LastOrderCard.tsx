@@ -24,7 +24,7 @@ const LastOrderCard: React.FC<ICardOrder> = ({
   };
 
   return (
-    <Card sx={{ maxWidth: "95vw" }}>
+    <Card sx={{ maxWidth: "95vw", border: 1.5, borderColor: "darkgrey" }}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

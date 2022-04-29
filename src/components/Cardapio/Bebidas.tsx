@@ -5,15 +5,17 @@ import { Grid, Typography } from "@mui/material";
 
 import IBebida from '../../interfaces/IBebida'
 import CardapioCardItem from "./cards/CardapioCardItem";
-import { useOrderContext } from "../../context/orderContext";
+import { useOrderContext } from "../../context/OrderContext";
 
 const Bebidas = () => {
 
   const { order, setOrder } = useOrderContext();
   
   const handleClick = (id: string) => {
-    console.log("Clique esta sendo tratado " + id)
-  }
+    let novaBebida = bebida?.find(item => item._id === id);
+    if (novaBebida!)
+      setOrder({ ...order, drinks: order.drinks.push(novaBebida) });
+  };
 
   const [bebida, setBebidas] = useState<IBebida[]>();
 
@@ -69,7 +71,7 @@ const Bebidas = () => {
                 handleClick={handleClick}
               />
             </Grid>
-          )};
+          )}
       </Grid>
     </Grid>
   );

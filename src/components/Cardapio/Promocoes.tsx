@@ -5,24 +5,25 @@ import { Grid, Typography } from "@mui/material";
 
 import IPromocao from '../../interfaces/IPromocao'
 import PromocoesCardItem from "./cards/PromocoesCardItem";
-import { useOrderContext } from "../../context/orderContext";
+import { useOrderContext } from "../../context/OrderContext";
 
 const Promocoes = () => {
 
   const { order, setOrder } = useOrderContext();
   
-  const handleClick = () => {
-        
-  }
-
   const [promocao, setPromocoes] = useState<IPromocao[]>();
+
+  const handleClick = (id: string) => {
+    let novaPromo = promocao?.find(item => item._id === id);
+    if (novaPromo!)
+      setOrder({ ...order, promos: order.promos.push(novaPromo) });
+  }
 
   useEffect(() => {
     //Obter prmocoes 
     axios.get('https://cyber-pizza-engsoft.herokuapp.com/promo')
       .then (resposta => {
         setPromocoes(resposta.data);
-        console.log(resposta.data);
       })
       .catch(erro => {
         console.log(erro)
@@ -73,7 +74,7 @@ const Promocoes = () => {
                 handleClick={handleClick}
               />}
             </Grid>
-          )};
+          )}
       </Grid>
     </Grid>
   );

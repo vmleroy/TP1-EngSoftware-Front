@@ -5,7 +5,7 @@ import IPizza2Flavours from "./IPizza2Flavours";
 export default interface ICardPromocoes {
     _id: string,
     name: string,
-    promoPrice: string,
+    promoPrice: number,
     originalPrice: number,
     discount: number,
     pizzas: IPizza[],

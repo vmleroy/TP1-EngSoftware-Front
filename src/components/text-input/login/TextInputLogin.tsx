@@ -18,18 +18,18 @@ const TextInputLogin: React.FC<Props> = ({
   };
 
   return (
-    <Box sx={{ '& > :not(style)': { m: 1 }, backgroundColor: "lightgray", margin: "1rem" }}>
+    <Box sx={{ '& > :not(style)': { m: 1 }, margin: "1rem" }}>
       <Box 
-        sx={{ display: 'flex', alignItems: 'flex-end', width: '30vw'}}
+        sx={{ display: 'flex', alignItems: 'flex-end'}}
       >
         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField 
           id="email" 
           label="Email" 
-          variant="standard" 
+          variant="outlined" 
           required
-          onChange={onChangeUsuario}  
-          sx={{width: "25vw"}}        
+          onChange={onChangeUsuario}   
+          sx={{width: 300}} 
         />
       </Box>
     </Box>

@@ -20,7 +20,7 @@ const PromocoesCardItem: FC<ICardPromocoes> = ({
     handleClick
 }) => {
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ maxWidth: 220, border: 1.5, borderColor: "darkgrey" }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div"
                     sx={{fontSize: 15}}
@@ -28,16 +28,17 @@ const PromocoesCardItem: FC<ICardPromocoes> = ({
                     {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                        R$ {originalPrice} -- Desconto: R$ {discount}
+                        R$ {originalPrice} -- Desconto: {discount}%
                 </Typography>
                 <Typography variant="body2" sx={{mt: 2}}>
-                        Novo preco: {promoPrice}
+                        Novo preco: {promoPrice.toFixed(1)}
                 </Typography>
             </CardContent>
             <CardActions>
                 <Button 
                     size="small"
                     variant = "outlined"
+                    onClick={() => {handleClick(_id)}}
                 >
                     Adicionar ao carrinho
                 </Button>

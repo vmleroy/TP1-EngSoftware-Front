@@ -26,7 +26,7 @@ const Login: React.FC = () => {
     }
     return (
         <Grid
-            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
+            sx={{ minWidth: "100vw", minHeight: "100vh", backgroundColor: '#f5f5f5' }}
         >
             <NavBar /> 
             <Grid
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
                 alignItems="center"
                 justifyContent="center"
                 direction="column"  
-                sx={{ minWidth: "80vh", minHeight: "80vh"}}              
+                sx={{ minWidth: "80vw", minHeight: "80vh"}}              
             >
                 <Typography sx={{
                     fontWeight: "1500",

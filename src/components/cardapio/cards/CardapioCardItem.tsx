@@ -18,7 +18,7 @@ const CardapioCardItem: FC<ICardCardapio> = ({
     handleClick
 }) => {    
     return (
-        <Card sx={{ maxWidth: 200}}>
+        <Card sx={{ maxWidth: 220, border: 1.5, borderColor: "darkgrey" }}>
             <CardMedia
             component="img"
             height="140"
