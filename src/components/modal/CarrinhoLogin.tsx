@@ -1,48 +1,40 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import {
-  Button, Modal, Grid, Switch, FormControl,
-  InputLabel, Select, MenuItem, SelectChangeEvent,
-  Typography, IconButton
-}
-  from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Button, Modal, Grid, Typography, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface Props {
-  modalOpen: boolean,
-  handleCloseModal: () => void
+  modalOpen: boolean;
+  handleCloseModal: () => void;
 }
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-const CarrinhoLogin: React.FC<Props> = ({
-  modalOpen, handleCloseModal
-}) => {
-
+const CarrinhoLogin: React.FC<Props> = ({ modalOpen, handleCloseModal }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate("/login");
-  }
+  };
 
   const handleSignIn = () => {
     navigate("/cadastro");
-  }
+  };
 
-  const handleExitButton = () =>  {
+  const handleExitButton = () => {
     handleCloseModal();
-  }
+  };
 
   return (
     <Modal
@@ -56,7 +48,11 @@ const CarrinhoLogin: React.FC<Props> = ({
         justifyContent="center"
         sx={style}
       >
-        <IconButton onClick={() => { handleExitButton() }}>
+        <IconButton
+          onClick={() => {
+            handleExitButton();
+          }}
+        >
           <CloseIcon />
         </IconButton>
         <Grid
@@ -68,20 +64,22 @@ const CarrinhoLogin: React.FC<Props> = ({
           alignItems="center"
           direction="column"
         >
-          <Typography>
-            Voce deve estar logado para finalizar pedido!
-          </Typography>
+          <Typography>Voce deve estar logado para finalizar pedido!</Typography>
           <Grid>
             <Button
-              variant='outlined'
-              onClick={() => { handleLogin() }}
+              variant="outlined"
+              onClick={() => {
+                handleLogin();
+              }}
               sx={{ margin: 1 }}
             >
               Fazer Login
             </Button>
             <Button
-              variant='outlined'
-              onClick={() => { handleSignIn() }}
+              variant="outlined"
+              onClick={() => {
+                handleSignIn();
+              }}
               sx={{ margin: 1 }}
             >
               Fazer cadastro
@@ -90,7 +88,7 @@ const CarrinhoLogin: React.FC<Props> = ({
         </Grid>
       </Grid>
     </Modal>
-  )
-}
+  );
+};
 
 export default CarrinhoLogin;
