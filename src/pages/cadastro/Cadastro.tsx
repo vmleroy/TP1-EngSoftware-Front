@@ -43,7 +43,7 @@ const Cadastro: React.FC = () => {
     }
     return (
         <Grid
-            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#121212' }}
+            sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: '#f5f5f5' }}
         >
             <NavBar /> 
             <Grid
@@ -64,10 +64,10 @@ const Cadastro: React.FC = () => {
                 </Typography>
                 <TextInput setValue={setName} label="Name"/>
                 <TextInput setValue={setEmail} label="Email"/>
-                <TextInputPassword setPassword={setPassword} />
                 <TextInput setValue={setCPF} label="CPF"/>
                 <TextInput setValue={setPhone} label="Phone"/>
                 <TextInput setValue={setAddress} label="Address"/>
+                <TextInputPassword setPassword={setPassword} />
                 <Button variant="outlined"
                         sx={{ margin: "0.5rem" }}
                         onClick={() => {handleClick(
