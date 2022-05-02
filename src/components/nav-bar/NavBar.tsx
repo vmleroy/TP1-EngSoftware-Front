@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { CssBaseline, AppBar, Typography, 
@@ -10,10 +10,15 @@ const NavBar = () => {
 
     const navigate = useNavigate();
 
-    let login = false;
     const handleLoginClick = () => {
-        if (!login)
-            navigate("/login");
+        if (document.cookie.split(';').some((item) => item.includes('status=user'))) {
+            // @ts-ignore
+            const id = ('; '+document.cookie).split('; id_user=').pop().split(';')[0];
+            navigate("/user/:" + id);
+        }
+        else
+            // para sair/logout -> document.cookie = "status=guest"
+            navigate('/login');
     }
 
     return (
