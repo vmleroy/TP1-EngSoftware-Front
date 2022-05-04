@@ -41,6 +41,14 @@ const NavBar = () => {
             <IconButton
               color="primary"
               onClick={() => {
+                navigate("/login");
+              }}
+            >
+              <Avatar src={"/images/carrinho_3.png"} variant="square" />
+            </IconButton>
+            <IconButton
+              color="primary"
+              onClick={() => {
                 navigate("/carrinho");
               }}
             >
