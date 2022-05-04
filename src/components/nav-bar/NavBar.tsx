@@ -1,5 +1,5 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   CssBaseline,
   AppBar,
@@ -12,10 +12,17 @@ import {
 
 const NavBar = () => {
   const navigate = useNavigate();
-
-  let login = false;
   const handleLoginClick = () => {
-    if (!login) navigate("/login");
+    if (
+      document.cookie.split(";").some((item) => item.includes("status=user"))
+    ) {
+      // @ts-ignore
+      const id = ("; " + document.cookie)
+        .split("; id_user=")
+        .pop()
+        .split(";")[0];
+      navigate("/user/:" + id);
+    } else navigate("/login");
   };
 
   return (
@@ -41,6 +48,7 @@ const NavBar = () => {
             <IconButton
               color="primary"
               onClick={() => {
+                document.cookie = "status=guest";
                 navigate("/login");
               }}
             >
