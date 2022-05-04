@@ -10,7 +10,6 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const navigate = useNavigate();
-
   const handleClick = (
     email: string | undefined,
     password: string | undefined
