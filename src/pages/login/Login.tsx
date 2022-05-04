@@ -7,9 +7,11 @@ import NavBar from "../../components/nav-bar/NavBar";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
+
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const navigate = useNavigate();
+
   const handleClick = (
     email: string | undefined,
     password: string | undefined
@@ -36,6 +38,7 @@ const Login: React.FC = () => {
       });
     console.log("Verificando login");
   };
+
   return (
     <Grid
       sx={{ minWidth: "100vw", minHeight: "100vh", backgroundColor: "#f5f5f5" }}

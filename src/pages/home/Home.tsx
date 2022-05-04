@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import NavBar from "../../components/nav-bar/NavBar";
-import Promocoes from "../../components/Cardapio/Promocoes";
-import Pizzas from "../../components/Cardapio/Pizzas";
-import Bebidas from "../../components/Cardapio/Bebidas";
+import Promocoes from "../../components/cardapio/Promocoes";
+import Pizzas from "../../components/cardapio/Pizzas";
+import Bebidas from "../../components/cardapio/Bebidas";
 
 const Home: React.FC = () => {
   return (

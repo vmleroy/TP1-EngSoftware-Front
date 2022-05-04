@@ -94,7 +94,7 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
                   value={pizza}
                   label="Sabores"
                   onChange={handleChange}
-                  sx={{ minWidth: "30vw" }}
+                  sx={{ minWidth: 200 }}
                 >
                   {pizzas?.map((item: IPizza) => {
                       if (item._id != idPizza)

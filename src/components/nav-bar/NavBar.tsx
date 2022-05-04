@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   CssBaseline,
   AppBar,
@@ -9,6 +10,8 @@ import {
   IconButton,
   Grid,
 } from "@mui/material";
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ const NavBar = () => {
         .split("; id_user=")
         .pop()
         .split(";")[0];
-      navigate("/user/:" + id);
+      navigate("/user/" + id);
     } else navigate("/login");
   };
 
@@ -48,15 +51,6 @@ const NavBar = () => {
             <IconButton
               color="primary"
               onClick={() => {
-                document.cookie = "status=guest";
-                navigate("/login");
-              }}
-            >
-              <Avatar src={"/images/carrinho_3.png"} variant="square" />
-            </IconButton>
-            <IconButton
-              color="primary"
-              onClick={() => {
                 navigate("/carrinho");
               }}
             >
@@ -70,6 +64,17 @@ const NavBar = () => {
             >
               <Avatar src={"/images/login_3.png"} />
             </IconButton>
+            { document.cookie.split(";").some((item) => item.includes("status=user")) && 
+              <IconButton
+                color="primary"
+                onClick={() => {
+                  document.cookie = "status=guest";
+                  navigate("/login");
+                }}
+              >
+                <LogoutIcon sx={{color: "#ffdd6b"}}/>
+              </IconButton>
+            }
           </Toolbar>
         </AppBar>
       </Grid>

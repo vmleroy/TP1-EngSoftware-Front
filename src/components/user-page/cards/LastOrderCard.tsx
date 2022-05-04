@@ -30,25 +30,25 @@ const LastOrderCard: React.FC<ICardOrder> = ({
           <Typography gutterBottom variant="h5" component="div">
             Pedido {number} || Status: {status}
           </Typography>
-          <Grid sx={{display: "flex", alignItems: "flex-start", flexDirection: "column"}}>
+          <Grid sx={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
             <Typography>
-                Itens:
+              Itens:
             </Typography>
-            {pizzas?.map( item =>
+            {pizzas?.map(item =>
               <Typography variant="body2" color="text.secondary">
                 . {item.name} -- R${item.price}
-              </Typography>              
+              </Typography>
             )}
-            {drinks?.map( item =>
+            {drinks?.map(item =>
               <Typography variant="body2" color="text.secondary">
                 . {item.name} -- R${item.price}
               </Typography>
             )}
           </Grid>
-          <Grid sx={{display: "flex", alignItems: "flex-end", flexDirection: "column"}}>
-              <Typography variant="body2" color="text.secondary">
-                Valor total: R${calcularValorTotal()} 
-              </Typography>                
+          <Grid sx={{ display: "flex", alignItems: "flex-end", flexDirection: "column" }}>
+            <Typography variant="body2" color="text.secondary">
+              Valor total: R${calcularValorTotal()}
+            </Typography>
           </Grid>
         </CardContent>
       </CardActionArea>

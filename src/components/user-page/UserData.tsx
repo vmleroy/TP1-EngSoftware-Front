@@ -54,10 +54,10 @@ const UserData = () => {
                 direction="column"
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Nome: {dados?.name} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Email: {dados?.email} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Cpf: {dados?.cpf} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Telefone: {dados?.phone} </Typography>                
+                <Typography sx={{ ml:1, mt:0.5 }}> Nome: {dados?.name} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Email: {dados?.email} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Cpf: {dados?.cpf} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Telefone: {dados?.phone} </Typography>                
                 
             </Grid>
         </Grid>

@@ -61,11 +61,11 @@ const AddressData = () => {
                 direction="column"
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Cep: {dados?.cep} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Rua: {dados?.street} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Bairro: {dados?.district} </Typography>
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Numero: {dados?.number} </Typography>                
-                <Typography sx={{ color: "white", ml:1, mt:0.5 }}> Cidade: {dados?.city} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Cep: {dados?.cep} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Rua: {dados?.street} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Bairro: {dados?.district} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Numero: {dados?.number} </Typography>                
+                <Typography sx={{ ml:1, mt:0.5 }}> Cidade: {dados?.city} </Typography>
                 
             </Grid>
         </Grid>
