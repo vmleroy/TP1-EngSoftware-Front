@@ -6,21 +6,22 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 
-import ICardOrder from '../../../interfaces/ICardOrder';
+import ICardOrder from '../../../interfaces/IOrderCard';
 
 const LastOrderCard: React.FC<ICardOrder> = ({
   status,
   number,
   pizzas,
   drinks,
-  pizza2flavours
+  pizza2flavours,
+  promos
 }) => {
 
-  const calcularValorTotal = () => {
-    let valorTotal = 0;
-    drinks.map(item => valorTotal += item.price);
-    pizzas.map(item => valorTotal += item.price);
-    return valorTotal;
+  const calculateTotalValue = () => {
+    let totalValue = 0;
+    drinks.map(item => totalValue += item.price);
+    pizzas.map(item => totalValue += item.price);
+    return totalValue;
   };
 
   return (
@@ -44,10 +45,20 @@ const LastOrderCard: React.FC<ICardOrder> = ({
                 . {item.name} -- R${item.price}
               </Typography>
             )}
+            {pizza2flavours?.map(item =>
+              <Typography variant="body2" color="text.secondary">
+              . {item.name} -- R${item.price}
+              </Typography>
+            )}
+            {promos?.map(item =>
+              <Typography variant="body2" color="text.secondary">
+              . {item.name} -- R${item.promoPrice}
+              </Typography>
+            )}
           </Grid>
           <Grid sx={{ display: "flex", alignItems: "flex-end", flexDirection: "column" }}>
             <Typography variant="body2" color="text.secondary">
-              Valor total: R${calcularValorTotal()}
+              Valor total: R${calculateTotalValue()}
             </Typography>
           </Grid>
         </CardContent>

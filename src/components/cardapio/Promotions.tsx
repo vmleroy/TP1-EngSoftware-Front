@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid, Typography } from "@mui/material";
-import IPromocao from "../../interfaces/IPromocao";
+import IPromocao from "../../interfaces/IPromo";
 import PromocoesCardItem from "./cards/PromocoesCardItem";
 import { useOrderContext } from "../../context/OrderContext";
 
-const Promocoes = () => {
+const Promotion = () => {
   const { order, setOrder } = useOrderContext();
 
-  const [promocao, setPromocoes] = useState<IPromocao[]>();
+  const [promotions, setPromotions] = useState<IPromocao[]>();
 
   const handleClick = (id: string) => {
-    let novaPromo = promocao?.find((item) => item._id === id);
+    const novaPromo = promotions?.find((item) => item._id === id);
+    console.log(novaPromo);
     if (novaPromo!)
-      setOrder({ ...order, promos: order.promos.push(novaPromo) });
+      setOrder({ ...order, promos: order.promos.push(novaPromo)});
   };
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Promocoes = () => {
     axios
       .get("https://cyber-pizza-engsoft.herokuapp.com/promo")
       .then((resposta) => {
-        setPromocoes(resposta.data);
+        setPromotions(resposta.data);
       })
       .catch((erro) => {
         console.log(erro);
@@ -57,7 +58,7 @@ const Promocoes = () => {
         direction="row"
         sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
       >
-        {promocao?.map((item) => (
+        {promotions?.map((item) => (
           <Grid item sx={{ margin: 2 }} padding="0.5rem">
             {
               <PromocoesCardItem
@@ -79,4 +80,4 @@ const Promocoes = () => {
     </Grid>
   );
 };
-export default Promocoes;
+export default Promotion;

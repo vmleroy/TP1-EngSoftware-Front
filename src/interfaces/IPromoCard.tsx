@@ -1,8 +1,8 @@
-import IBebida from "./IBebida";
+import IBebida from "./IDrinks";
 import IPizza from "./IPizza";
 import IPizza2Flavours from "./IPizza2Flavours";
 
-export default interface ICardPromocoes {
+export default interface IPromoCard {
     _id: string,
     name: string,
     promoPrice: number,

@@ -11,17 +11,17 @@ const UserData = () => {
 
     const { id } = useParams();
 
-    const [dados, setDados] = useState<IUser>();
+    const [data, setData] = useState<IUser>();
 
 
     useEffect(() => {
         //Obter dados do usuario 
         axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
-            .then(resposta => {
-                setDados(resposta.data);
+            .then(response => {
+                setData(response.data);
             })
-            .catch(erro => {
-                console.log(erro)
+            .catch(err => {
+                console.log(err)
             });
     }, []);
 
@@ -54,10 +54,10 @@ const UserData = () => {
                 direction="column"
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
-                <Typography sx={{ ml:1, mt:0.5 }}> Nome: {dados?.name} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Email: {dados?.email} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Cpf: {dados?.cpf} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Telefone: {dados?.phone} </Typography>                
+                <Typography sx={{ ml:1, mt:0.5 }}> Nome: {data?.name} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Email: {data?.email} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Cpf: {data?.cpf} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Telefone: {data?.phone} </Typography>                
                 
             </Grid>
         </Grid>

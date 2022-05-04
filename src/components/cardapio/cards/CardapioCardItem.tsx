@@ -7,9 +7,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import ICardCardapio from '../../../interfaces/ICardCardapio'
+import ICardCardapio from '../../../interfaces/IMenuCard'
 
-const CardapioCardItem: FC<ICardCardapio> = ({
+const MenuCardItem: FC<ICardCardapio> = ({
     description,
     image,
     name,
@@ -49,4 +49,4 @@ const CardapioCardItem: FC<ICardCardapio> = ({
     );
 }
 
-export default CardapioCardItem;
+export default MenuCardItem;

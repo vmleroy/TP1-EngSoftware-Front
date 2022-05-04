@@ -24,11 +24,9 @@ const Pizzas = () => {
         pizza1: id[0],
         pizza2: id[1]
       }
-      console.log(new_pizza)
       axios.post('https://cyber-pizza-engsoft.herokuapp.com/pizza2flavors', new_pizza)
       .then(response => { 
-        console.log("crinando")
-        setOrder({ ...order, pizza2flavors: order.pizza2flavors.push(response.data) });
+        setOrder({ ...order, pizza2flavors: order.pizza2flavors.push(response.data[0]) });
       })
       .catch(erro => {
         console.log(erro);

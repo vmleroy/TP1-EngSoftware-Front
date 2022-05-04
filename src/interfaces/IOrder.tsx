@@ -1,7 +1,7 @@
-import IBebida from "./IBebida";
+import IBebida from "./IDrinks";
 import IPizza from "./IPizza";
 import IPizza2Flavours from "./IPizza2Flavours";
-import IPromocao from "./IPromocao";
+import IPromocao from "./IPromo";
 import IUser from "./IUser";
 
 export default interface IOrder {

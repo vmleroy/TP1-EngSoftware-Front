@@ -15,6 +15,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const NavBar = () => {
   const navigate = useNavigate();
+  
   const handleLoginClick = () => {
     if (
       document.cookie.split(";").some((item) => item.includes("status=user"))

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const TextInputLogin: React.FC<Props> = ({ setEmail }) => {
-  const onChangeUsuario = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeUser = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
@@ -22,7 +22,7 @@ const TextInputLogin: React.FC<Props> = ({ setEmail }) => {
           label="Email"
           variant="outlined"
           required
-          onChange={onChangeUsuario}
+          onChange={onChangeUser}
           sx={{ width: 300 }}
         />
       </Box>

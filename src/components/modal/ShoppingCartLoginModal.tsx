@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 
-const CarrinhoLogin: React.FC<Props> = ({ modalOpen, handleCloseModal }) => {
+const ShoppingCartLoginModal: React.FC<Props> = ({ modalOpen, handleCloseModal }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -91,4 +91,4 @@ const CarrinhoLogin: React.FC<Props> = ({ modalOpen, handleCloseModal }) => {
   );
 };
 
-export default CarrinhoLogin;
+export default ShoppingCartLoginModal;

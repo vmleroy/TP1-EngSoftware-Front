@@ -1,8 +1,8 @@
-import IBebida from "./IBebida"
+import IBebida from "./IDrinks"
 import IPizza from "./IPizza"
 import IPizza2Flavours from "./IPizza2Flavours"
 
-export default interface IPromocao {
+export default interface IPromo {
     name: string,
     promoPrice: number,
     originalPrice: number,

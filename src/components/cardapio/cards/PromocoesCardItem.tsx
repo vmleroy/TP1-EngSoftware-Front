@@ -6,9 +6,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import ICardPromocoes from '../../../interfaces/ICardPromocoes'
+import ICardPromocoes from '../../../interfaces/IPromoCard'
 
-const PromocoesCardItem: FC<ICardPromocoes> = ({
+const PromotionsCardItem: FC<ICardPromocoes> = ({
     name,
     promoPrice,
     originalPrice,
@@ -47,4 +47,4 @@ const PromocoesCardItem: FC<ICardPromocoes> = ({
     );
 }
 
-export default PromocoesCardItem;
+export default PromotionsCardItem;

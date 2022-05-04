@@ -35,14 +35,14 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
   handleCloseModalWithPizza, handleCloseModal
 }) => {
 
-  const [meioPizza, setMeioPizza] = useState(false);
+  const [halfPizza, sethalfPizza] = useState(false);
   const [pizza, setPizza] = useState<string>('');
   const [idPizzas, setIdPizzas] = useState<string[]>([])
 
 
-  const handleClickAddCarrinho = () => {
+  const handleClickAddShoppingCart = () => {
     idPizzas.push(idPizza);
-    if (meioPizza) {
+    if (halfPizza) {
       idPizzas.push(pizza);
     }
     handleCloseModalWithPizza(idPizzas);
@@ -81,10 +81,10 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
           direction="column"
         >
           <Typography>Deseja Pizza meio a meio?</Typography>
-          <Switch onChange={(e) => { setMeioPizza(e.target.checked) }}
+          <Switch onChange={(e) => { sethalfPizza(e.target.checked) }}
             defaultChecked={false}
           />
-          {meioPizza &&
+          {halfPizza &&
             <Grid>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Sabores</InputLabel>
@@ -106,7 +106,7 @@ const Pizza2FlavoursModal: React.FC<Props> = ({
             </Grid>
           }
           <Button
-            onClick={() => { handleClickAddCarrinho() }}
+            onClick={() => { handleClickAddShoppingCart() }}
             sx={{ margin: 2 }}
           >
             Adicionar ao carrinho

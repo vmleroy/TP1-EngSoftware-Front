@@ -11,24 +11,24 @@ const AddressData = () => {
 
     const { id } = useParams();
 
-    const [dados, setDados] = useState<IAddress>();
+    const [address, setAddress] = useState<IAddress>();
 
 
     useEffect(() => {
         //Obter dados do usuario 
         axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
-            .then(resposta_1 => {
-                const address_id = resposta_1.data.address;
+            .then(response_1 => {
+                const address_id = response_1.data.address;
                 axios.get('https://cyber-pizza-engsoft.herokuapp.com/endereco/' + address_id)
-                    .then (resposta_2 => {
-                        setDados(resposta_2.data);
+                    .then (response_2 => {
+                        setAddress(response_2.data);
                     })
-                    .catch(erro_2 => {
-                        console.log(erro_2)
+                    .catch(err_2 => {
+                        console.log(err_2)
                     });
             })
-            .catch(erro_1 => {
-                console.log(erro_1)
+            .catch(err_1 => {
+                console.log(err_1)
             });
     }, []);
 
@@ -61,11 +61,11 @@ const AddressData = () => {
                 direction="column"
                 sx={{ minHeight: "20vh", border: 2, borderColor: "#120458" }}
             >
-                <Typography sx={{ ml:1, mt:0.5 }}> Cep: {dados?.cep} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Rua: {dados?.street} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Bairro: {dados?.district} </Typography>
-                <Typography sx={{ ml:1, mt:0.5 }}> Numero: {dados?.number} </Typography>                
-                <Typography sx={{ ml:1, mt:0.5 }}> Cidade: {dados?.city} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Cep: {address?.cep} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Rua: {address?.street} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Bairro: {address?.district} </Typography>
+                <Typography sx={{ ml:1, mt:0.5 }}> Numero: {address?.number} </Typography>                
+                <Typography sx={{ ml:1, mt:0.5 }}> Cidade: {address?.city} </Typography>
                 
             </Grid>
         </Grid>

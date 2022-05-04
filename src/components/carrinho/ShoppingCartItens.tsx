@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 
 import { useOrderContext } from "../../context/OrderContext";
 
-const ItensCarrinho = () => {
+const ShoppingCartItens = () => {
   const { order, setOrder } = useOrderContext();
 
   return (
@@ -61,4 +61,4 @@ const ItensCarrinho = () => {
     </Grid>
   );
 };
-export default ItensCarrinho;
+export default ShoppingCartItens;

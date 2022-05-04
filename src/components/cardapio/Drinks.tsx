@@ -3,27 +3,27 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 
-import IBebida from '../../interfaces/IBebida'
+import IBebida from '../../interfaces/IDrinks'
 import CardapioCardItem from "./cards/CardapioCardItem";
 import { useOrderContext } from "../../context/OrderContext";
 
-const Bebidas = () => {
+const Drinks = () => {
 
   const { order, setOrder } = useOrderContext();
   
   const handleClick = (id: string) => {
-    let novaBebida = bebida?.find(item => item._id === id);
+    let novaBebida = drinks?.find(item => item._id === id);
     if (novaBebida!)
       setOrder({ ...order, drinks: order.drinks.push(novaBebida) });
   };
 
-  const [bebida, setBebidas] = useState<IBebida[]>();
+  const [drinks, setDrinks] = useState<IBebida[]>();
 
   useEffect(() => {
     //Obter bebidas 
     axios.get('https://cyber-pizza-engsoft.herokuapp.com/bebida')
       .then (resposta => {
-        setBebidas(resposta.data);
+        setDrinks(resposta.data);
       })
       .catch(erro => {
         console.log(erro);
@@ -59,7 +59,7 @@ const Bebidas = () => {
         direction="row"
         sx={{ minHeight: "20vh", border: 2, borderColor:"#120458" }}
       >
-          {bebida?.map(item =>
+          {drinks?.map(item =>
             <Grid item sx={{ margin: 2 }} padding="0.5rem">
               <CardapioCardItem 
                 key={item._id}
@@ -76,4 +76,4 @@ const Bebidas = () => {
     </Grid>
   );
 };
-export default Bebidas;
+export default Drinks;

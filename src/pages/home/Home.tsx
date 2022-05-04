@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import NavBar from "../../components/nav-bar/NavBar";
-import Promocoes from "../../components/cardapio/Promocoes";
+import Promotions from "../../components/cardapio/Promotions";
 import Pizzas from "../../components/cardapio/Pizzas";
-import Bebidas from "../../components/cardapio/Bebidas";
+import Drinks from "../../components/cardapio/Drinks";
 
 const Home: React.FC = () => {
   return (
@@ -26,9 +26,9 @@ const Home: React.FC = () => {
           rowSpacing={4}
           marginTop="0.5rem"
         >
-          <Promocoes />
+          <Promotions />
           <Pizzas />
-          <Bebidas />
+          <Drinks />
         </Grid>
       </Grid>
     </>

@@ -1,4 +1,4 @@
-export default interface IBebida {
+export default interface IDrinks {
     description: string,
     image: string,
     name: string,

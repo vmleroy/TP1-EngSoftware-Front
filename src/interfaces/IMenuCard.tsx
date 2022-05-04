@@ -1,4 +1,4 @@
-export default interface ICardCardapio {
+export default interface IMenuCard {
     _id: string
     description: string,
     image: string,

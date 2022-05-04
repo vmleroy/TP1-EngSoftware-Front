@@ -15,7 +15,7 @@ const LastOrders = () => {
     const [order, setOrder] = useState<IOrder[]>([]);
 
     useEffect(() => {
-        axios.get('https://cyber-pizza-engsoft.herokuapp.com/pedido/usuario/' + id)
+        axios.get('http://localhost:8000/pedido/usuario/' + id)
           .then (resposta => {
             setOrder(resposta.data);
             console.log(resposta.data);
@@ -62,6 +62,7 @@ const LastOrders = () => {
                             pizzas={pedido.pizzas}
                             drinks={pedido.drinks}
                             pizza2flavours={pedido.pizza2flavors}
+                            promos={pedido.promos}
                         />
                     </Grid>
                 )}

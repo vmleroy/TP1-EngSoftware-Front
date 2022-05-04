@@ -1,17 +1,44 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Grid, Typography } from "@mui/material";
+
+import { Button, Grid, TextField, Typography } from "@mui/material";
+
 import TextInput from "../../components/text-input/TextInput";
 import TextInputPassword from "../../components/text-input/password/TextInputPassword";
 import NavBar from "../../components/nav-bar/NavBar";
+import CepComponents from "../../components/cadastro/CepComponents";
+import IAddress from "../../interfaces/IAddress";
 
 const Cadastro: React.FC = () => {
+
   const [name, setName] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [cpf, setCPF] = useState<string>();
   const [phone, setPhone] = useState<string>();
-  const [address, setAddress] = useState<string>();
+  const [cep, setCep] = useState<string>();
+  const [city, setCity] = useState<string>();
+  const [street, setStreet] = useState<string>();
+  const [district, setDistrict] = useState<string>();
+  const [number, setNumber] = useState<string>();
+  const [complement, setComplement] = useState<string>();
+
+  const [address, setAddress] = useState<IAddress>();
+
+  const [cepSearched, setCepSearched] = useState(false);
+
+  const handleCEP = () => {
+    setCepSearched(true);
+    axios.get('https://viacep.com.br/ws/' + cep + '/json/')
+      .then((response) => {
+        setCity(response.data.localidade);
+        setStreet(response.data.logradouro);
+        setDistrict(response.data.bairro);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleClick = (
     email: string | undefined,
@@ -19,25 +46,46 @@ const Cadastro: React.FC = () => {
     name: string | undefined,
     cpf: string | undefined,
     phone: string | undefined,
-    address: string | undefined
+    cep: string | undefined,
+    city: string | undefined,
+    street: string | undefined,
+    district: string | undefined,
+    number: string | undefined,
+    complement: string | undefined
   ) => {
+    axios.post("https://cyber-pizza-engsoft.herokuapp.com/endereco", {
+      cep: cep,
+      city: city,
+      street: street,
+      district: district,
+      number: parseInt(number!),
+      complement: complement
+    })
+      .then((response) => {
+        setAddress(response.data);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+    console.log(address);
     axios
-      .post("http://localhost:8000/usuario", {
+      .post("https://cyber-pizza-engsoft.herokuapp.com/usuario", {
         email: email,
         password: password,
         name: name,
         cpf: cpf,
         phone: phone,
-        address: address,
+        address: address
       })
-      .then((resposta) => {
-        console.debug(resposta.data);
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((erro) => {
         console.log(erro);
       });
     console.log("Verificando login");
   };
+
   return (
     <Grid
       sx={{ minWidth: "100vh", minHeight: "100vh", backgroundColor: "#f5f5f5" }}
@@ -61,22 +109,36 @@ const Cadastro: React.FC = () => {
         >
           CADASTRO
         </Typography>
-        <TextInput setValue={setName} label="Name" />
+        <TextInput setValue={setName} label="Nome" />
         <TextInput setValue={setEmail} label="Email" />
-        <TextInput setValue={setCPF} label="CPF" />
-        <TextInput setValue={setPhone} label="Phone" />
-        <TextInput setValue={setAddress} label="Address" />
         <TextInputPassword setPassword={setPassword} />
-        <Button
-          variant="outlined"
-          sx={{ margin: "0.5rem" }}
-          onClick={() => {
-            handleClick(email, password, name, cpf, phone, address);
-          }}
-        >
-          {" "}
-          Cadastro{" "}
-        </Button>
+        <TextInput setValue={setCPF} label="CPF" />
+        <TextInput setValue={setPhone} label="Celular" />
+        <TextInput setValue={setCep} label="CEP" />
+        <Button variant="outlined" onClick={handleCEP}> Procurar CEP </Button>
+        {cepSearched &&
+          <CepComponents
+            city={city}
+            street={street}
+            district={district}
+            setNumber={setNumber}
+            setComplement={setComplement}
+          />
+        }
+        {cepSearched &&
+          <Button
+            variant="outlined"
+            sx={{ margin: "0.5rem" }}
+            onClick={() => {
+              handleClick(email, password, name, cpf, phone, cep,
+                city, street, district, number,
+                complement);
+            }}
+          >
+            {" "}
+            Cadastro{" "}
+          </Button>
+        }
       </Grid>
     </Grid>
   );
@@ -84,6 +146,10 @@ const Cadastro: React.FC = () => {
 
 export default Cadastro;
 
+
+function parseJSON(arg0: Promise<import("axios").AxiosResponse<any, any>>): JSON {
+  throw new Error("Function not implemented.");
+}
 /*
   const handleClick = (
     email: string | undefined,
