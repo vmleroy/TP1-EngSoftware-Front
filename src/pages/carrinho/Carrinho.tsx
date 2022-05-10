@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Button, Grid, Typography } from "@mui/material";
 import NavBar from "../../components/nav-bar/NavBar";
@@ -6,21 +8,23 @@ import { useOrderContext } from "../../context/OrderContext";
 
 import ShoppingCartItens from "../../components/carrinho/ShoppingCartItens";
 import ShoppingCartLoginModal from "../../components/modal/ShoppingCartLoginModal";
-import axios from "axios";
 
 const Carrinho: React.FC = () => {
+
+  const navigate = useNavigate();
+
   const { order, setOrder } = useOrderContext();
 
   const [openModal, setOpenModal] = useState(false);
 
-  const finishOrder = () => {
+  const finishOrder = async () => {
     if (document.cookie.split(";").some((item) => item.includes("status=user"))) {
       // @ts-ignore
       const id = ("; " + document.cookie)
         .split("; id_user=")
         .pop()
         .split(";")[0];
-      axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
+      await axios.get('https://cyber-pizza-engsoft.herokuapp.com/usuario/' + id)
         .then(response => {
           setOrder({ ...order, user: (order.user = response.data) })
         })
@@ -29,7 +33,19 @@ const Carrinho: React.FC = () => {
         });
       setOrder({ ...order, status: (order.status = "completed") });
       console.log(order);
-      //axios.post('https://cyber-pizza-engsoft.herokuapp.com/pedido', order);
+      await axios.post('https://cyber-pizza-engsoft.herokuapp.com/pedido', order);
+      setOrder({...order, number: (order.number = 0), 
+        user: (order.user = {name: "", email: "", cpf: "", phone: "", 
+          addres: { city: "", cep: "", street: "", district: "", number: 0, complement: "",}
+        }),
+        createDate: (order.createDate = new Date()),
+        status: (order.status = "pending"),
+        pizzas: (order.pizzas = []),
+        pizza2flavors: (order.pizza2flavors = []),
+        drinks: (order.drinks = []),
+        promos: (order.promos = [])
+      })
+      navigate('/');
     }
     else {
       setOpenModal(true);

@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     password: string | undefined
   ) => {
     axios
-      .post("http://localhost:8000/login", { email: email, password: password })
+      .post("https://cyber-pizza-engsoft.herokuapp.com/login", { email: email, password: password })
       .then((resposta) => {
         console.debug(resposta.data);
         document.cookie = "status=user";

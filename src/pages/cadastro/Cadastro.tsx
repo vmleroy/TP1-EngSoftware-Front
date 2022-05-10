@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 
 import TextInput from "../../components/text-input/TextInput";
 import TextInputPassword from "../../components/text-input/password/TextInputPassword";
@@ -23,8 +23,6 @@ const Cadastro: React.FC = () => {
   const [number, setNumber] = useState<string>();
   const [complement, setComplement] = useState<string>();
 
-  const [address, setAddress] = useState<IAddress>();
-
   const [cepSearched, setCepSearched] = useState(false);
 
   const handleCEP = () => {
@@ -40,7 +38,7 @@ const Cadastro: React.FC = () => {
       });
   };
 
-  const handleClick = (
+  const handleClick = async (
     email: string | undefined,
     password: string | undefined,
     name: string | undefined,
@@ -53,7 +51,7 @@ const Cadastro: React.FC = () => {
     number: string | undefined,
     complement: string | undefined
   ) => {
-    axios.post("https://cyber-pizza-engsoft.herokuapp.com/endereco", {
+    await axios.post("https://cyber-pizza-engsoft.herokuapp.com/endereco", {
       cep: cep,
       city: city,
       street: street,
@@ -62,28 +60,25 @@ const Cadastro: React.FC = () => {
       complement: complement
     })
       .then((response) => {
-        setAddress(response.data);
+        axios.post("https://cyber-pizza-engsoft.herokuapp.com/usuario", {
+          email: email,
+          password: password,
+          name: name,
+          cpf: cpf,
+          phone: phone,
+          address: response.data
+        })
+          .then((response_2) => {
+            console.log(response_2.data);
+
+          })
+          .catch((erro_2) => {
+            console.log(erro_2);
+          });
       })
       .catch((erro) => {
         console.log(erro);
       });
-    console.log(address);
-    axios
-      .post("https://cyber-pizza-engsoft.herokuapp.com/usuario", {
-        email: email,
-        password: password,
-        name: name,
-        cpf: cpf,
-        phone: phone,
-        address: address
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((erro) => {
-        console.log(erro);
-      });
-    console.log("Verificando login");
   };
 
   return (

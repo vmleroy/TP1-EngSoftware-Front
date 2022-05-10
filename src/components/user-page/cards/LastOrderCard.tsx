@@ -19,8 +19,12 @@ const LastOrderCard: React.FC<ICardOrder> = ({
 
   const calculateTotalValue = () => {
     let totalValue = 0;
-    drinks.map(item => totalValue += item.price);
-    pizzas.map(item => totalValue += item.price);
+    pizzas?.map((item) => (totalValue += item.price));
+    pizza2flavours?.map((item) => (totalValue += item.price));
+    drinks?.map((item) => (totalValue += item.price));
+    promos?.map(
+      (item) => (totalValue += parseFloat(item.promoPrice.toFixed(1)))
+    );
     return totalValue;
   };
 
@@ -52,7 +56,7 @@ const LastOrderCard: React.FC<ICardOrder> = ({
             )}
             {promos?.map(item =>
               <Typography variant="body2" color="text.secondary">
-              . {item.name} -- R${item.promoPrice}
+              . {item.name} -- R${item.promoPrice.toFixed(1)}
               </Typography>
             )}
           </Grid>

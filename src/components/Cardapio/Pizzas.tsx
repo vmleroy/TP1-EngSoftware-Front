@@ -18,13 +18,13 @@ const Pizzas = () => {
   
   const [openModal, setOpenModal] = useState(false);
 
-  const handleCloseModalWithPizza = (id: string[]) => {
+  const handleCloseModalWithPizza = async (id: string[]) => {
     if (id.length > 1) {
       const new_pizza = {
         pizza1: id[0],
         pizza2: id[1]
       }
-      axios.post('https://cyber-pizza-engsoft.herokuapp.com/pizza2flavors', new_pizza)
+      await axios.post('https://cyber-pizza-engsoft.herokuapp.com/pizza2flavors', new_pizza)
       .then(response => { 
         setOrder({ ...order, pizza2flavors: order.pizza2flavors.push(response.data[0]) });
       })
