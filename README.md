@@ -1,5 +1,7 @@
 <center>
+  
 ![](./src/logo-cefet.png)
+
 </center>
   <h1 align="center">Trabalho Prático Engenharia de Software do CEFET-MG  </h1>
   <h1 align="center"> CyberPizza Front-end</h1>
