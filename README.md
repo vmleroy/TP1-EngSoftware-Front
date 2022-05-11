@@ -1,6 +1,6 @@
 <center>
 
-![](./logo-cefet.png)
+![](./src/logo-cefet.png)
 
 </center>
 
